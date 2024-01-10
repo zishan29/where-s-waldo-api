@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import express, { type Express } from 'express';
+import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
@@ -10,25 +10,14 @@ import indexRouter from './routes/index';
 
 dotenv.config();
 
-const app: Express = express();
+const app = express();
 
-const mongoDb: string | undefined = process.env.MONGODB_URI;
+const mongoDb = process.env.MONGODB_URI;
+await mongoose.connect(mongoDb);
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'mongo connection error'));
 
-main().catch((err) => {
-  console.log(err);
-});
-async function main(): Promise<void> {
-  if (typeof mongoDb === 'string') {
-    await mongoose.connect(mongoDb);
-  }
-}
-
-interface corsInterface {
-  origin: string[];
-  optionsSuccessStatus: number;
-}
-
-const corsOptions: corsInterface = {
+const corsOptions = {
   origin: ['https://blog-bice-tau-13.vercel.app', 'http://localhost:3000'],
   optionsSuccessStatus: 200,
 };

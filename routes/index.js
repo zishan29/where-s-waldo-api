@@ -1,10 +1,10 @@
-import express, { type Router } from 'express';
+import express from 'express';
 import {
   getAllCharacters,
   postCharacter,
 } from '../controllers/characterController';
 
-const router: Router = express.Router();
+const router = express.Router();
 
 router.get('/characters', getAllCharacters);
 
