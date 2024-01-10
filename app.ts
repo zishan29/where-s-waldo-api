@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 import express, { type Express } from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
@@ -6,6 +7,8 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 
 import indexRouter from './routes/index';
+
+dotenv.config();
 
 const app: Express = express();
 

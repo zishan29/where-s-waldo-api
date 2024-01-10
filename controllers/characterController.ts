@@ -18,4 +18,14 @@ const getAllCharacters = asyncHandler(
   },
 );
 
+// const postCharacter = asyncHandler(
+//   async (req: Request, res: Response, next: NextFunction) => {
+//     const newCharacter = {
+//       name: req.body.name,
+//       position: { x: req.body.x_coordinate, y: req.body.y_coordinate },
+//     };
+
+//   },
+// );
+
 export { getAllCharacters };
