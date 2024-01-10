@@ -1,19 +1,18 @@
-import dotenv from 'dotenv';
-import express from 'express';
-import path from 'path';
-import cookieParser from 'cookie-parser';
-import logger from 'morgan';
-import mongoose from 'mongoose';
-import cors from 'cors';
+require('dotenv').config();
 
-import indexRouter from './routes/index';
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const mongoose = require('mongoose');
+const cors = require('cors');
 
-dotenv.config();
+const indexRouter = require('./routes/index');
 
 const app = express();
 
 const mongoDb = process.env.MONGODB_URI;
-await mongoose.connect(mongoDb);
+mongoose.connect(mongoDb);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'mongo connection error'));
 
@@ -31,4 +30,4 @@ app.use(cors(corsOptions));
 
 app.use('/', indexRouter);
 
-export default app;
+module.exports = app;

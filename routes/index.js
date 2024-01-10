@@ -1,13 +1,10 @@
-import express from 'express';
-import {
-  getAllCharacters,
-  postCharacter,
-} from '../controllers/characterController';
+const express = require('express');
+const characterController = require('../controllers/characterController');
 
 const router = express.Router();
 
-router.get('/characters', getAllCharacters);
+router.get('/characters', characterController.getAllCharacters);
 
 // router.post('/characters', postCharacter);
 
-export default router;
+module.exports = router;

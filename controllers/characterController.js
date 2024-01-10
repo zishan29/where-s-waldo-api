@@ -1,7 +1,7 @@
-import asyncHandler from 'express-async-handler';
-import Character from '../models/character';
+const asyncHandler = require('express-async-handler');
+const Character = require('../models/character');
 
-const getAllCharacters = asyncHandler(async (req, res, next) => {
+exports.getAllCharacters = asyncHandler(async (req, res, next) => {
   try {
     const characters = await Character.find();
     res.status(200).json({ data: { characters } });
@@ -15,14 +15,11 @@ const getAllCharacters = asyncHandler(async (req, res, next) => {
   }
 });
 
-// const postCharacter = asyncHandler(
+// exports.postCharacter = asyncHandler(
 //   async (req, res, next) => {
 //     const newCharacter = {
 //       name: req.body.name,
 //       position: { x: req.body.x_coordinate, y: req.body.y_coordinate },
 //     };
-
 //   },
 // );
-
-export { getAllCharacters };
