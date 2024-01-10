@@ -33,7 +33,7 @@ exports.postCharacter = asyncHandler(async (req, res, next) => {
   try {
     const newCharacter = new Character({
       name: req.body.name,
-      position: req.body.position,
+      boundingBox: req.body.boundingBox,
     });
     await newCharacter.save();
     res.status(200).json({ message: 'Character added' });
