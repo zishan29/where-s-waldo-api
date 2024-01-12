@@ -28,7 +28,7 @@ exports.postUser = asyncHandler(async (req, res, next) => {
   try {
     let newUser = new User({
       name: req.body.name,
-      score: req.body.score,
+      time: req.body.time,
     });
     await newUser.save();
     res.status(200).json({ message: 'User added' });
